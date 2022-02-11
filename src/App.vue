@@ -66,7 +66,7 @@
 
 <script setup lang="ts">
 import box from "./components/Box.vue";
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import { type IBox } from "@/types/IBox";
 
 // Options
