@@ -1,5 +1,6 @@
 .palette0{ --first:#00a0b0; --second:#6a4a3c; --third:#cc333f; --fourth:#eb6841; --fifth:#edc951; }
 .palette1{ --first:#046d8b; --second:#309292; --third:#2fb8ac; --fourth:#93a42a; --fifth:#ecbe13; }
+.palette2{ --first:#046d8b; --second:#309292; --third:#2fb8ac; --fourth:#93a42a; --fifth:#ecbe13; }
 .palette3{ --first:#1b676b; --second:#519548; --third:#88c425; --fourth:#bef202; --fifth:#eafde6; }
 .palette5{ --first:#1c2130; --second:#028f76; --third:#b3e099; --fourth:#ffeaad; --fifth:#d14334; }
 .palette6{ --first:#2d2d29; --second:#215a6d; --third:#3ca2a2; --fourth:#92c7a3; --fifth:#dfece6; }
@@ -15,8 +16,7 @@
 .palette20{ --first:#5d4157; --second:#838689; --third:#a8caba; --fourth:#cad7b2; --fifth:#ebe3aa; }
 .palette22{ --first:#5e9fa3; --second:#dcd1b4; --third:#fab87f; --fourth:#f87e7b; --fifth:#b05574; }
 .palette23{ --first:#607848; --second:#789048; --third:#c0d860; --fourth:#f0f0d8; --fifth:#604848; }
-.palette25{ --first:#69d2e7; --second:#a7dbd8; --third:#e0e4cc; --fourth:#f38630; --fifth:#fa6900; }
-.palette26{ --first:#6c9484; --second:#749c74; --third:#f7f1ed; --fourth:#e2c0b0; --fifth:#a29b91; }
+.palette26{ --first:#69d2e7; --second:#a7dbd8; --third:#e0e4cc; --fourth:#f38630; --fifth:#fa6900; }
 .palette27{ --first:#774f38; --second:#e08e79; --third:#f1d4af; --fourth:#ece5ce; --fifth:#c5e0dc; }
 .palette28{ --first:#8c2318; --second:#5e8c6a; --third:#88a65e; --fourth:#bfb35a; --fifth:#f2c45a; }
 .palette29{ --first:#8dccad; --second:#988864; --third:#fea6a2; --fourth:#f9d6ac; --fifth:#ffe9af; }
