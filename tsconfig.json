@@ -3,7 +3,10 @@
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
     "importsNotUsedAsValues": "remove",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "references": [
     {

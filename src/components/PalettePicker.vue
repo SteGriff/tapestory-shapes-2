@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { palettes } from "@/data/constants.ts";
+import { palettes } from "@/data/constants";
 
 defineProps<{
   modelValue: number;
