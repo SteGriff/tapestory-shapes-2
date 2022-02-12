@@ -15,9 +15,9 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { type IBox } from "@/types/IBox";
+import { type IStoryElement } from "@/types/IStoryElement";
 
 defineProps<{
-  boxModel: IBox;
+  boxModel: IStoryElement;
 }>();
 </script>

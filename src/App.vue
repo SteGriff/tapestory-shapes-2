@@ -1,23 +1,29 @@
 <template>
   <div class="ph2">
     <main class="sans-serif w-99 measure center mv4">
-      <box :box-model="boxModel" />
+      <div v-for="(se, index) in storyElements" :key="index">
+        <box :box-model="se" @click="selectBox(index)" />
+      </div>
 
-      <palette-picker v-model="boxModel.palette" />
+      <button class="center w4 h4" @click="addBox">+</button>
+      <!-- <box :box-model="selectedBox" /> -->
 
-      <shader-picker v-model="boxModel.shader" :palette="boxModel.palette" />
+      <palette-picker v-model="selectedBox.palette" />
+
+      <shader-picker v-model="selectedBox.shader" :palette="selectedBox.palette" />
 
       <foreground-picker
-        v-model="boxModel.foreground"
-        :palette="boxModel.palette"
-        :shader="boxModel.shader"
+        v-model="selectedBox.foreground"
+        :palette="selectedBox.palette"
+        :shader="selectedBox.shader"
       />
 
       <!-- Debug -->
       <ul>
-        <li>Palette {{ boxModel.palette }}</li>
-        <li>Shader {{ boxModel.shader }}</li>
-        <li>Foreground {{ boxModel.foreground }}</li>
+        <li>{{ selectedBoxIndex }}</li>
+        <li>Palette {{ selectedBox.palette }}</li>
+        <li>Shader {{ selectedBox.shader }}</li>
+        <li>Foreground {{ selectedBox.foreground }}</li>
       </ul>
     </main>
   </div>
@@ -29,17 +35,38 @@ import palettePicker from "@/components/PalettePicker.vue";
 import shaderPicker from "@/components/ShaderPicker.vue";
 import foregroundPicker from "@/components/ForegroundPicker.vue";
 
-import { reactive } from "vue";
-import { type IBox } from "@/types/IBox";
+import { computed, reactive, ref } from "vue";
+import type { IStoryElement } from "./types/IStoryElement";
+import { StoryElementType } from "./types/StoryElementType";
 
-// Selection
-const boxModel = reactive<IBox>({
+const initialBox: IStoryElement = {
+  elementType: StoryElementType.Box,
   shape: "round",
   shader: "g135",
   palette: 38,
   foreground: "black",
   text: "This is my story",
-});
-</script>
+};
 
-<style></style>
+const storyElements = reactive<IStoryElement[]>([initialBox]);
+const selectedBoxIndex = ref(0);
+
+const selectedBox = computed(() => storyElements[selectedBoxIndex.value]);
+
+const selectBox = (index: number) => {
+  console.log(index);
+  selectedBoxIndex.value = index;
+}
+
+const addBox = () => {
+  const newBox: IStoryElement = {
+    elementType: StoryElementType.Box,
+    shape: "round",
+    shader: "1",
+    palette: 1,
+    foreground: "black",
+    text: "Hi, I'm new",
+  }
+  storyElements.push(newBox)
+}
+</script>
