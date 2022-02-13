@@ -5,8 +5,7 @@
         <box :box-model="se" @click="selectBox(index)" />
       </div>
 
-      <button class="center w4 h4" @click="addBox">+</button>
-      <!-- <box :box-model="selectedBox" /> -->
+      <button class="bg-white ba b--black pointer br-pill db center f2 w3 h3" @click="addBox">+</button>
 
       <palette-picker v-model="selectedBox.palette" />
 
@@ -38,6 +37,8 @@ import foregroundPicker from "@/components/ForegroundPicker.vue";
 import { computed, reactive, ref } from "vue";
 import type { IStoryElement } from "./types/IStoryElement";
 import { StoryElementType } from "./types/StoryElementType";
+import { randomFrom } from "./utils/random";
+import { palettes, shaders } from "./data/constants";
 
 const initialBox: IStoryElement = {
   elementType: StoryElementType.Box,
@@ -62,9 +63,9 @@ const addBox = () => {
   const newBox: IStoryElement = {
     elementType: StoryElementType.Box,
     shape: "round",
-    shader: "1",
-    palette: 1,
-    foreground: "black",
+    shader: randomFrom(shaders),
+    palette: randomFrom(palettes),
+    foreground: "white",
     text: "Hi, I'm new",
   }
   storyElements.push(newBox)
