@@ -5,11 +5,21 @@
         <box :box-model="se" @click="selectBox(index)" />
       </div>
 
-      <button class="bg-white ba b--black pointer br-pill db center f2 w3 h3" @click="addBox">+</button>
+      <!-- <h1 class="heading palette38 shaderg135">Hello World</h1> -->
+
+      <button
+        class="bg-white ba b--black black pointer br-pill f2 w3 h3 db center tc"
+        @click="addBox"
+      >
+        +
+      </button>
 
       <palette-picker v-model="selectedBox.palette" />
 
-      <shader-picker v-model="selectedBox.shader" :palette="selectedBox.palette" />
+      <shader-picker
+        v-model="selectedBox.shader"
+        :palette="selectedBox.palette"
+      />
 
       <foreground-picker
         v-model="selectedBox.foreground"
@@ -38,7 +48,7 @@ import { computed, reactive, ref } from "vue";
 import type { IStoryElement } from "./types/IStoryElement";
 import { StoryElementType } from "./types/StoryElementType";
 import { randomFrom } from "./utils/random";
-import { palettes, shaders } from "./data/constants";
+import { palettes, randomShaders } from "./data/constants";
 
 const initialBox: IStoryElement = {
   elementType: StoryElementType.Box,
@@ -55,19 +65,18 @@ const selectedBoxIndex = ref(0);
 const selectedBox = computed(() => storyElements[selectedBoxIndex.value]);
 
 const selectBox = (index: number) => {
-  console.log(index);
   selectedBoxIndex.value = index;
-}
+};
 
 const addBox = () => {
   const newBox: IStoryElement = {
     elementType: StoryElementType.Box,
     shape: "round",
-    shader: randomFrom(shaders),
+    shader: randomFrom(randomShaders),
     palette: randomFrom(palettes),
     foreground: "white",
     text: "Hi, I'm new",
-  }
-  storyElements.push(newBox)
-}
+  };
+  storyElements.push(newBox);
+};
 </script>

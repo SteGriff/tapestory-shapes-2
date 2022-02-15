@@ -1,19 +1,11 @@
-.box {
-  min-height: 3rem;
-  min-width: 3rem;
-  background: blue;
-  border-radius: 0.5rem;
-  color: white;
-  padding: 1.8rem;
-  margin: 1.8rem 0;
+html {
+  background: white;
 }
-
-html { background: white; }
 
 .neu {
   border-radius: 1rem;
   background: white;
-  box-shadow:  5px 5px 11px #c1c1c1, -5px -5px 11px #ffffff;
+  box-shadow: 5px 5px 11px #c1c1c1, -5px -5px 11px #ffffff;
 }
 
 .ws-nw {
@@ -23,21 +15,27 @@ html { background: white; }
 .black {
   color: black;
 }
+
 .white {
   color: white;
 }
+
 .first {
   color: var(--first);
 }
+
 .second {
   color: var(--second);
 }
+
 .third {
   color: var(--third);
 }
+
 .fourth {
   color: var(--fourth);
 }
+
 .fifth {
   color: var(--fifth);
 }
@@ -45,15 +43,19 @@ html { background: white; }
 .bg-first {
   background: var(--first);
 }
+
 .bg-second {
   background: var(--second);
 }
+
 .bg-third {
   background: var(--third);
 }
+
 .bg-fourth {
   background: var(--fourth);
 }
+
 .bg-fifth {
   background: var(--fifth);
 }
@@ -62,12 +64,11 @@ html { background: white; }
   height: 32px;
   width: 32px;
 }
+
 .palSlice {
   width: 6px;
   height: 30px;
 }
-
-
 
 .shapeRound {
   border-radius: 0.5rem;
@@ -76,62 +77,56 @@ html { background: white; }
 .shader1 {
   background-color: var(--first);
 }
+
 .shader2 {
   background-color: var(--second);
 }
+
 .shader3 {
   background-color: var(--third);
 }
+
 .shader4 {
   background-color: var(--fourth);
 }
+
 .shader5 {
   background-color: var(--fifth);
 }
 
 .shaderg13 {
-  background: linear-gradient(
-    90deg,
-    var(--first) 0%,
-    var(--third) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--first) 0%,
+      var(--third) 100%);
 }
 
 .shaderg234 {
-  background: linear-gradient(
-    90deg,
-    var(--second) 0%,
-    var(--third) 50%,
-    var(--fourth) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--second) 0%,
+      var(--third) 50%,
+      var(--fourth) 100%);
 }
 
 .shaderg35 {
-  background: linear-gradient(
-    90deg,
-    var(--third) 0%,
-    var(--fifth) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--third) 0%,
+      var(--fifth) 100%);
 }
 
 .shaderg135 {
-  background: linear-gradient(
-    90deg,
-    var(--first) 0%,
-    var(--third) 50%,
-    var(--fifth) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--first) 0%,
+      var(--third) 50%,
+      var(--fifth) 100%);
 }
 
 .shaderg12345 {
-  background: linear-gradient(
-    90deg,
-    var(--first) 0%,
-    var(--second) 20%,
-    var(--third) 40%,
-    var(--fourth) 60%,
-    var(--fifth) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--first) 0%,
+      var(--second) 20%,
+      var(--third) 40%,
+      var(--fourth) 60%,
+      var(--fifth) 100%);
 }
 
 .shaderc1 {
@@ -145,17 +140,32 @@ html { background: white; }
 }
 
 .shaderh23 {
-  background: linear-gradient(
-    120deg,
-    var(--second) 49.9%,
-    var(--third) 50.1%
-  );
+  background: linear-gradient(120deg,
+      var(--second) 49.9%,
+      var(--third) 50.1%);
 }
 
 .shaderh34 {
-  background: linear-gradient(
-    120deg,
-    var(--third) 49.9%,
-    var(--fourth) 50.1%
-  );
+  background: linear-gradient(120deg,
+      var(--third) 49.9%,
+      var(--fourth) 50.1%);
+}
+
+/* These need to come last for cascade reasons */
+
+.box {
+  min-height: 3rem;
+  min-width: 3rem;
+  border-radius: 0.5rem;
+  padding: 1.8rem;
+  margin: 1.8rem 0;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 3rem;
+  display: table;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
