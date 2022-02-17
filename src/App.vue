@@ -28,12 +28,14 @@
       />
 
       <!-- Debug -->
-      <ul>
-        <li>{{ selectedBoxIndex }}</li>
-        <li>Palette {{ selectedBox.palette }}</li>
-        <li>Shader {{ selectedBox.shader }}</li>
-        <li>Foreground {{ selectedBox.foreground }}</li>
-      </ul>
+      <table class="w5 center tc" cell-spacing="0">
+        <tr>
+          <td class="ba pa1">{{ selectedBoxIndex }}</td>
+          <td class="ba pa1">{{ selectedBox.palette }}</td>
+          <td class="ba pa1">{{ selectedBox.shader }}</td>
+          <td class="ba pa1">{{ selectedBox.foreground }}</td>
+        </tr>
+      </table>
     </main>
   </div>
 </template>

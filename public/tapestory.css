@@ -169,3 +169,11 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.box, .heading {
+  transition:transform 0.25s ease-out;
+}
+
+.box:active, .box:hover, .box:focus {
+  transform:scale(1.05);
+}

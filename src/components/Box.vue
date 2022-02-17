@@ -1,7 +1,7 @@
 <template>
   <div
     contenteditable
-    class="box tc b"
+    class="box tc b pointer"
     :class="[
       'shape' + boxModel.shape,
       'shader' + boxModel.shader,
