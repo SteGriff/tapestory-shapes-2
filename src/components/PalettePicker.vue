@@ -1,8 +1,8 @@
 <template>
-  <div class="mv4 neu overflow-hidden">
+  <div>
     <div class="overflow-x-auto pv3 ph2 ws-nw">
       <div
-        v-for="p in palettes"
+        v-for="p in paletteList"
         :key="p"
         :class="['palette' + p]"
         class="mh1 dib ba sqr32 br2 pointer overflow-hidden"
@@ -20,8 +20,12 @@
 
 <script setup lang="ts">
 import { palettes } from "@/data/constants";
+import { computed, reactive, ref } from "vue";
 
-defineProps<{
+const props = defineProps<{
   modelValue: number;
 }>();
+
+let paletteList = computed(() => [props.modelValue, ...palettes]);
+const expanded = ref(false);
 </script>
