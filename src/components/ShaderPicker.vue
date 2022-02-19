@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { shaders } from "@/data/constants";
+import { shaders } from "@/data/Constants";
 
 defineProps<{
   palette: number;

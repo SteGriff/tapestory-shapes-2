@@ -18,7 +18,7 @@ export default defineConfig({
   server: {
     strictPort: true,
     hmr: {
-      port: 443 // Glitch only - Comment this out on local PC
+      //port: 443 // Glitch only - Comment this out on local PC
     }
   }
 });

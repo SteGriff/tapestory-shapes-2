@@ -16,16 +16,16 @@ export const shaders: string[] = [
   "c1",
   "c2",
   "h23",
-  "h34"
+  "h34",
 ];
 
-export const randomShaders : string[] = [
+export const randomShaders: string[] = [
   "g13",
   "g234",
   "g35",
   "g135",
   "c1",
-  "c2"
+  "c2",
 ];
 
 export const foregrounds: string[] = [

@@ -3,15 +3,16 @@
     <aside class="h-100 w2 minw2 br b--gray z-0">
       <palette-picker
         class="z-99 fl ml1 mw3 mv4 ba br4 bg-white overflow-hidden"
-        :class="{ mw6: expanded }"
-        @click="() => (expanded = !expanded)"
+        :class="{ mw6: state.expandedTool == ToolType.Palette }"
+        @click="() => (state.expandedTool = ToolType.Palette)"
         v-model="selectedBox.palette"
+        :expanded="state.expandedTool == ToolType.Palette"
       />
     </aside>
 
     <main class="ph2 w-100 ba measure center mv4">
       <div>
-        <div v-for="(se, index) in storyElements" :key="index">
+        <div v-for="(se, index) in state.storyElements" :key="index">
           <box :box-model="se" @click="selectBox(index)" />
         </div>
       </div>
@@ -39,7 +40,7 @@
       <!-- Debug -->
       <table class="w5 center tc" cell-spacing="0">
         <tr>
-          <td class="ba pa1">{{ selectedBoxIndex }}</td>
+          <td class="ba pa1">{{ state.selectedElementIndex }}</td>
           <td class="ba pa1">{{ selectedBox.palette }}</td>
           <td class="ba pa1">{{ selectedBox.shader }}</td>
           <td class="ba pa1">{{ selectedBox.foreground }}</td>
@@ -52,52 +53,27 @@
 <script setup lang="ts">
 import box from "@/components/Box.vue";
 import palettePicker from "@/components/PalettePicker.vue";
-import shaderPicker from "@/components/ShaderPicker.vue";
-import foregroundPicker from "@/components/ForegroundPicker.vue";
 
-import { computed, reactive, ref } from "vue";
-import type { IStoryElement } from "./types/IStoryElement";
-import { StoryElementType } from "./types/StoryElementType";
-import { randomFrom } from "./utils/random";
-import { palettes, randomShaders } from "./data/constants";
+import { computed, reactive } from "vue";
 import type { IAppState } from "./types/IAppState";
 import { ToolType } from "./types/ToolType";
+import { initialBox, randomBox } from "./data/StoryElementFactory";
 
-// Move this and addBox box into a boxFactory.ts kind of thing
-const initialBox: IStoryElement = {
-  elementType: StoryElementType.Box,
-  shape: "round",
-  shader: "g135",
-  palette: 38,
-  foreground: "black",
-  text: "This is my story",
-};
-
-// Use me instead of things below
 const state = reactive<IAppState>({
   expandedTool: ToolType.None,
   selectedElementIndex: 0,
-  storyElements: [initialBox],
+  storyElements: [initialBox()],
 });
 
-const storyElements = reactive<IStoryElement[]>([initialBox]);
-const selectedBoxIndex = ref(0);
-
-const selectedBox = computed(() => storyElements[selectedBoxIndex.value]);
+const selectedBox = computed(
+  () => state.storyElements[state.selectedElementIndex]
+);
 
 const selectBox = (index: number) => {
-  selectedBoxIndex.value = index;
+  state.selectedElementIndex = index;
 };
 
 const addBox = () => {
-  const newBox: IStoryElement = {
-    elementType: StoryElementType.Box,
-    shape: "round",
-    shader: randomFrom(randomShaders),
-    palette: randomFrom(palettes),
-    foreground: "white",
-    text: "Hi, I'm new",
-  };
-  storyElements.push(newBox);
+  state.storyElements.push(randomBox());
 };
 </script>

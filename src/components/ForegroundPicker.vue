@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { foregrounds } from "@/data/constants";
+import { foregrounds } from "@/data/Constants";
 
 defineProps<{
   palette: number;

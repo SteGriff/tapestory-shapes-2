@@ -1,31 +1,34 @@
 <template>
   <div>
-    <div class="overflow-x-auto pv3 ph2 ws-nw">
-      <div
-        v-for="p in paletteList"
-        :key="p"
-        :class="['palette' + p]"
-        class="mh1 dib ba sqr32 br2 pointer overflow-hidden"
-        @click="$emit('update:modelValue', p)"
-      >
-        <div class="dib palSlice bg-first"></div>
-        <div class="dib palSlice bg-second"></div>
-        <div class="dib palSlice bg-third"></div>
-        <div class="dib palSlice bg-fourth"></div>
-        <div class="dib palSlice bg-fifth"></div>
+    <div class="overflow-x-auto pv3 ph2 flex">
+      <div :class="['palette' + props.modelValue]" class="mh1">
+        <palette-chips />
+      </div>
+
+      <div v-if="props.expanded" class="dtr">
+        <div
+          v-for="p in paletteList"
+          :key="p"
+          :class="['palette' + p]"
+          class="mh1"
+          @click="$emit('update:modelValue', p)"
+        >
+          <palette-chips />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { palettes } from "@/data/constants";
-import { computed, reactive, ref } from "vue";
+import { palettes } from "@/data/Constants";
+import { computed } from "vue";
+import paletteChips from "./PaletteChips.vue";
 
 const props = defineProps<{
   modelValue: number;
+  expanded: boolean;
 }>();
 
-let paletteList = computed(() => [props.modelValue, ...palettes]);
-const expanded = ref(false);
+let paletteList = computed(() => [...palettes]);
 </script>
