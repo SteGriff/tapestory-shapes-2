@@ -1,20 +1,30 @@
 <template>
   <div>
-    <div class="overflow-x-auto pv3 ph2 flex">
-      <div :class="['palette' + props.modelValue]" class="mh1">
-        <palette-chips />
+    <div
+      class="overflow-x-none pv3 ph2 flex"
+      :class="{ 'overflow-x-auto': expanded }"
+    >
+      <div
+        :class="['palette' + modelValue]"
+        class="mh1"
+        @click="$emit('expandCollapse')"
+      >
+        <palette-chips class="selected" />
       </div>
 
-      <div v-if="props.expanded" class="dtr">
-        <div
-          v-for="p in paletteList"
-          :key="p"
-          :class="['palette' + p]"
-          class="mh1"
-          @click="$emit('update:modelValue', p)"
-        >
-          <palette-chips />
-        </div>
+      <div
+        v-for="p in paletteList"
+        :key="p"
+        :class="['palette' + p]"
+        class="mh1"
+        @click="
+          () => {
+            $emit('expand');
+            $emit('update:modelValue', p);
+          }
+        "
+      >
+        <palette-chips />
       </div>
     </div>
   </div>

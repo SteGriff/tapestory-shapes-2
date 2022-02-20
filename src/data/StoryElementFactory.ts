@@ -24,3 +24,7 @@ export function randomBox(): IStoryElement {
     text: "Hi, I'm new",
   };
 }
+
+export function elementLike(el : IStoryElement) {
+  return {...el};
+}

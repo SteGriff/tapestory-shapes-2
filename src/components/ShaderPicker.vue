@@ -1,12 +1,21 @@
 <template>
-  <div class="mv4 neu overflow-hidden">
-    <div class="overflow-x-auto pv3 ph2 ws-nw">
+  <div>
+    <div
+      class="overflow-x-none pv3 ph2 flex"
+      :class="{ 'overflow-x-auto': expanded }"
+    >
+      <div
+        :class="['shader' + modelValue, 'palette' + palette]"
+        class="mh1 sqr32 br2 pointer selected"
+        @click="$emit('expandCollapse')"
+      ></div>
+
       <div
         v-for="s in shaders"
         :key="s"
         :class="['shader' + s, 'palette' + palette]"
-        class="mh1 dib sqr32 br2 pointer"
-        @click="$emit('update:modelValue', s)"
+        class="mh1 sqr32 br2 pointer"
+        @click="() => { $emit('expand'); $emit('update:modelValue', s)}"
       ></div>
     </div>
   </div>
@@ -16,8 +25,9 @@
 import { defineProps } from "vue";
 import { shaders } from "@/data/Constants";
 
-defineProps<{
-  palette: number;
+const props = defineProps<{
   modelValue: string;
+  palette: number;
+  expanded: boolean;
 }>();
 </script>

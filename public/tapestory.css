@@ -8,8 +8,8 @@ html {
   box-shadow: 5px 5px 11px #c1c1c1, -5px -5px 11px #ffffff;
 }
 
-.ws-nw {
-  white-space: nowrap;
+.selected {
+  outline: 2px solid var(--first);
 }
 
 .black {
@@ -61,8 +61,8 @@ html {
 }
 
 .sqr32 {
-  height: 32px;
-  width: 32px;
+  min-height: 32px;
+  min-width: 32px;
 }
 
 .palSlice {

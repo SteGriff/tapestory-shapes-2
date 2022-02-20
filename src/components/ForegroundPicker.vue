@@ -1,12 +1,28 @@
 <template>
-  <div class="mv4 neu overflow-hidden">
-    <div class="overflow-x-auto pv3 ph2 ws-nw">
+  <div>
+    <div
+      class="overflow-x-none pv3 ph2 flex"
+      :class="{ 'overflow-x-auto': expanded }"
+    >
+      <div
+        :class="['shader' + shader, 'palette' + palette, modelValue]"
+        class="mh1 pa1 b br2 pointer selected"
+        @click="$emit('expandCollapse')"
+      >
+        {{ modelValue }}
+      </div>
+
       <div
         v-for="f in foregrounds"
         :key="f"
         :class="['shader' + shader, 'palette' + palette, f]"
-        class="mh1 dib pa1 b br2 pointer"
-        @click="$emit('update:modelValue', f)"
+        class="mh1 pa1 b br2 pointer"
+        @click="
+          () => {
+            $emit('expand');
+            $emit('update:modelValue', f);
+          }
+        "
       >
         {{ f }}
       </div>
@@ -19,8 +35,9 @@ import { defineProps } from "vue";
 import { foregrounds } from "@/data/Constants";
 
 defineProps<{
+  modelValue: string;
   palette: number;
   shader: string;
-  modelValue: string;
+  expanded: boolean;
 }>();
 </script>
