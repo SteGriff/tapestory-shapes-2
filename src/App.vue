@@ -1,33 +1,41 @@
 <template>
   <div class="flex h-100">
     <aside class="h-100 w2 minw2 br b--gray z-0">
-      <palette-picker
-        v-model="selectedElement.palette"
-        class="z-99 fl ml1 mw3 mv4 ba b--gray br4 bg-white overflow-hidden"
-        :class="{ mw6: toolIs(ToolType.Palette) }"
+      <tool-drawer
         :expanded="toolIs(ToolType.Palette)"
-        @expandCollapse="expandCollapse(ToolType.Palette)"
-        @expand="expand(ToolType.Palette)"
-      />
-      <shader-picker
-        v-model="selectedElement.shader"
-        class="z-99 fl ml1 mw3 mb4 ba b--gray br4 bg-white overflow-hidden"
-        :class="{ mw6: toolIs(ToolType.Shader) }"
-        :palette="selectedElement.palette"
+        :class="{ mw6: toolIs(ToolType.Palette) }"
+      >
+        <palette-picker
+          v-model="selectedElement.palette"
+          @expandCollapse="expandCollapse(ToolType.Palette)"
+          @expand="expand(ToolType.Palette)"
+        />
+      </tool-drawer>
+
+      <tool-drawer
         :expanded="toolIs(ToolType.Shader)"
-        @expandCollapse="expandCollapse(ToolType.Shader)"
-        @expand="expand(ToolType.Shader)"
-      />
-      <foreground-picker
-        v-model="selectedElement.foreground"
-        class="z-99 fl ml1 mw3 mb4 ba b--gray br4 bg-white overflow-hidden"
-        :class="{ mw6: toolIs(ToolType.Foreground) }"
-        :palette="selectedElement.palette"
-        :shader="selectedElement.shader"
+        :class="{ mw6: toolIs(ToolType.Shader) }"
+      >
+        <shader-picker
+          v-model="selectedElement.shader"
+          :palette="selectedElement.palette"
+          @expandCollapse="expandCollapse(ToolType.Shader)"
+          @expand="expand(ToolType.Shader)"
+        />
+      </tool-drawer>
+
+      <tool-drawer
         :expanded="toolIs(ToolType.Foreground)"
-        @expandCollapse="expandCollapse(ToolType.Foreground)"
-        @expand="expand(ToolType.Foreground)"
-      />
+        :class="{ mw6: toolIs(ToolType.Foreground) }"
+      >
+        <foreground-picker
+          v-model="selectedElement.foreground"
+          :palette="selectedElement.palette"
+          :shader="selectedElement.shader"
+          @expandCollapse="expandCollapse(ToolType.Foreground)"
+          @expand="expand(ToolType.Foreground)"
+        />
+      </tool-drawer>
     </aside>
 
     <main
@@ -68,11 +76,12 @@ import box from "@/components/Box.vue";
 import palettePicker from "@/components/PalettePicker.vue";
 import shaderPicker from "./components/ShaderPicker.vue";
 import foregroundPicker from "./components/ForegroundPicker.vue";
+import toolDrawer from "./components/ToolDrawer.vue";
 
 import { computed, reactive } from "vue";
 import type { IAppState } from "./types/IAppState";
 import { ToolType } from "./types/ToolType";
-import { elementLike, initialBox, randomBox } from "./data/StoryElementFactory";
+import { elementLike, initialBox } from "./data/StoryElementFactory";
 
 const state = reactive<IAppState>({
   expandedTool: ToolType.None,
