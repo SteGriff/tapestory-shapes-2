@@ -1,5 +1,8 @@
 <template>
-  <div class="z-99 fl ml1 mw3 mv4 ba b--gray br4 bg-white overflow-hidden">
+  <div
+    class="z-99 fixed drawer ba b--gray br4 bg-white overflow-hidden"
+    :class="{ expanded: expanded, collapsed: !expanded }"
+  >
     <div
       class="overflow-x-none pv3 ph2 flex"
       :class="{ 'overflow-x-auto': expanded }"
@@ -10,7 +13,21 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   expanded: boolean;
 }>();
 </script>
+
+<style>
+.drawer {
+  left: 0.5rem;
+  max-width: 4rem;
+  transition: max-width 0.25s ease-out;
+}
+.collapsed:hover {
+  max-width: 5rem;
+}
+.expanded {
+  max-width: 32rem;
+}
+</style>

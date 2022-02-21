@@ -1,10 +1,7 @@
 <template>
-  <div class="flex h-100">
+  <div class="flex h-100" @click.capture="expandCollapse(ToolType.None)">
     <aside class="h-100 w2 minw2 br b--gray z-0">
-      <tool-drawer
-        :expanded="toolIs(ToolType.Palette)"
-        :class="{ mw6: toolIs(ToolType.Palette) }"
-      >
+      <tool-drawer class="top-1" :expanded="toolIs(ToolType.Palette)">
         <palette-picker
           v-model="selectedElement.palette"
           @expandCollapse="expandCollapse(ToolType.Palette)"
@@ -12,10 +9,7 @@
         />
       </tool-drawer>
 
-      <tool-drawer
-        :expanded="toolIs(ToolType.Shader)"
-        :class="{ mw6: toolIs(ToolType.Shader) }"
-      >
+      <tool-drawer class="top-6" :expanded="toolIs(ToolType.Shader)">
         <shader-picker
           v-model="selectedElement.shader"
           :palette="selectedElement.palette"
@@ -24,10 +18,7 @@
         />
       </tool-drawer>
 
-      <tool-drawer
-        :expanded="toolIs(ToolType.Foreground)"
-        :class="{ mw6: toolIs(ToolType.Foreground) }"
-      >
+      <tool-drawer class="top-11" :expanded="toolIs(ToolType.Foreground)">
         <foreground-picker
           v-model="selectedElement.foreground"
           :palette="selectedElement.palette"
@@ -117,6 +108,5 @@ const expand = (t: ToolType) => {
 };
 const expandCollapse = (t: ToolType) => {
   state.expandedTool = state.expandedTool === t ? ToolType.None : t;
-  console.log(t);
 };
 </script>

@@ -2,6 +2,9 @@ html {
   background: white;
 }
 
+.top-6 { top: 6rem; }
+.top-11 { top: 11rem; }
+
 .neu {
   border-radius: 1rem;
   background: white;
@@ -175,11 +178,11 @@ html {
 }
 
 .box:hover, .heading:hover {
-  transform:scale(1.03);
+  transform:scale(1.02);
 }
 
 .box:active, .box:focus, 
 .heading:active, .heading:focus  {
-  transform:scale(1.05);
-  outline: 3px solid var(--first);
+  transform:scale(1.04);
+  outline: 2px solid var(--first);
 }
